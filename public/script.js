@@ -93,3 +93,33 @@ function fonctionAffine(a, b){
         })
     }
 }
+
+function fonctionPsecondDeg(a, b, c){
+    for (let i = 1; i < nbDeBoule + 1; i++) {
+        id = '#boule' + i.toString()
+        posX = i - nbDeBoule/2
+        posY = a*Math.pow(posX, 2) + b*posX + c
+        calc =  (demiph-posY).toString() + 'px'
+        anime({
+            targets : id,
+            top : calc,
+            duration : 750,
+            delay : i*6
+        })
+    }
+}
+
+function fonctionPtroisiemeDeg(a, b, c, d){
+    for (let i = 1; i < nbDeBoule + 1; i++) {
+        id = '#boule' + i.toString()
+        posX = i - nbDeBoule/2
+        posY = a*Math.pow(posX, 3) + b*Math.pow(posX, 2) + c*posX + d
+        calc =  (demiph-posY).toString() + 'px'
+        anime({
+            targets : id,
+            top : calc,
+            duration : 750,
+            delay : i*6
+        })
+    }
+}
