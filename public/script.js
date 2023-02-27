@@ -27,6 +27,13 @@ for (let i = 1; i < precisionEchelle + 1; i++) {
     .css({'top' : demiph.toString() + 'px', 'left' : ($(window).width()/precisionEchelle*i).toString() + 'px'})
     .html(((i-precisionEchelle/2)*nbDeBoule/precisionEchelle).toString())
     .appendTo('#echelle')
+    jQuery
+    ('<div>', {
+        class : 'divEchelleh',
+        id : 'divEchelleh' + (i).toString()
+    })
+    .css({'top' : '0', 'left' : ($(window).width()/precisionEchelle*i).toString() + 'px'})
+    .appendTo('#echelle')
 }
 
 //création de l'echelle verticale
@@ -38,7 +45,14 @@ for (let i = 1; i < precisionEchelle + 1; i++) {
         id : 'nbEchellev' + (i).toString()
     })
     .css({'left' : ($(window).width()/2).toString() + 'px', 'top' : (demiph*2/precisionEchelle*i).toString() + 'px'})
-    .html((   -((demiph*2/precisionEchelle*i-$(window).height()) + $(window).height()/2).toString()   ).toString())
+    .html(-(Math.floor((demiph*2/precisionEchelle*i-$(window).height()) + $(window).height()/2)).toString())
+    .appendTo('#echelle')
+    jQuery
+    ('<div>', {
+        class : 'divEchellev',
+        id : 'divEchellev' + (i).toString()
+    })
+    .css({'left' : '0', 'top' : (demiph*2/precisionEchelle*i).toString() + 'px'})
     .appendTo('#echelle')
 }
 
@@ -65,11 +79,11 @@ function horizontale() {
 
 var calc
 
-function fonctionAffine(a){
+function fonctionAffine(a, b){
     for (let i = 1; i < nbDeBoule + 1; i++) {
         id = '#boule' + i.toString()
         posX = i - nbDeBoule/2
-        posY = posX + a
+        posY = a*posX + b
         calc =  (demiph-posY).toString() + 'px'
         anime({
             targets : id,

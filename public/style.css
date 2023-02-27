@@ -33,5 +33,19 @@
     color: rgb(150, 150, 150);
     position: absolute;
     transform: translate(-100%, 0);
+}
 
+.divEchellev{
+    background-color: rgb(150, 150, 150);
+    height: 2px;
+    width: 100%;
+    opacity: 0.1;
+    position: absolute;
+}
+.divEchelleh{
+    background-color: rgb(150, 150, 150);
+    height: 100%;
+    width: 2px;
+    opacity: 0.1;
+    position: absolute;
 }
