@@ -27,6 +27,7 @@
 #echelle{
     height: 100%;
     width: 100%;
+    opacity: 0;
 }
 
 .nbEchelle{
@@ -48,4 +49,45 @@
     width: 2px;
     opacity: 0.1;
     position: absolute;
+}
+
+#titre{
+    position: absolute;
+    font-size: 50px;
+    color: white;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    opacity: 0;
+}
+
+#boutonStart{
+    position: absolute;
+    height: 50px;
+    width: 200px;
+    z-index: 7;
+    border: solid 4px white;
+    background-color: transparent;
+    font-size: 20px;
+    color: white;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: 0.75s;
+}
+#boutonStart:hover{
+    border-bottom-right-radius: 20px;
+    background-color: rgb(163, 61, 163);
+}
+
+#fonction{
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
 }
