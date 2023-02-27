@@ -7,6 +7,7 @@
     padding: 0;
     margin: 0;
     overflow: hidden;
+    font-family: 'Raleway';
 }
 
 #container{
@@ -21,4 +22,16 @@
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
+}
+
+#echelle{
+    height: 100%;
+    width: 100%;
+}
+
+.nbEchelle{
+    color: rgb(150, 150, 150);
+    position: absolute;
+    transform: translate(-100%, 0);
+
 }
