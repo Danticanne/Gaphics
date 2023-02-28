@@ -278,9 +278,9 @@ function sinusoidale(a, b, c, d){
     for (let i = 1; i < nbDeBoule + 1; i++) {
         id = '#boule' + i.toString()
         posX = (i - nbDeBoule/2)/multiplicateur
-        posY = (a*10*Math.sin(b*(posX-c))+d)*multiplicateur
+        posY = (a*Math.sin(b*(posX-c))+d)*multiplicateur
         calc =  (demiph-posY).toString() + 'px'
-        eq = 'f(x)=' + Math.floor(a*100)/100 + 'sin(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ') +' + Math.floor(d*100)/100
+        eq = 'f(x)=' + Math.floor(a*100)/100 + 'sin(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ')) +' + Math.floor(d*100)/100
         $("#fonction").html(eq)
         $("#uiFonction").html(eq)
         anime({
@@ -296,9 +296,9 @@ function expo(a, b, c, d){
     for (let i = 1; i < nbDeBoule + 1; i++) {
         id = '#boule' + i.toString()
         posX = (i - nbDeBoule/2)/multiplicateur
-        posY = (a*10*Math.exp(b*(posX-c))+d)*multiplicateur
+        posY = (a*Math.exp(b*(posX-c))+d)*multiplicateur
         calc =  (demiph-posY).toString() + 'px'
-        eq = 'f(x)=' + Math.floor(a*100)/100 + 'exp(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ') +' + Math.floor(d*100)/100
+        eq = 'f(x)=' + Math.floor(a*100)/100 + 'exp(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ')) +' + Math.floor(d*100)/100
         $("#fonction").html(eq)
         $("#uiFonction").html(eq)
         anime({
@@ -308,4 +308,93 @@ function expo(a, b, c, d){
             delay : i*6
         })
     }
+}
+
+//tracer la fonction choisi
+
+
+var fonctionChoisi
+var af = 1
+var bf = 1
+var cf = 1
+var df = 1
+
+//quand bouton changer recolter valeurs et changer en fonction
+
+function change(value, index){
+    af = parseInt($("#a").val())
+    bf = parseInt($("#b").val())
+    cf = parseInt($("#c").val())
+    df = parseInt($("#d").val())
+    fonctionChoisi = $("#selectBase").val()
+    if(fonctionChoisi == "identité"){
+        $('#fonctionA').html('f(x)=x')
+        af = 1
+        bf = 0
+        fonctionChoisi = 'affine'
+    }
+    if(fonctionChoisi == "carré"){
+        $('#fonctionA').html('f(x)=x²')
+        af = 1
+        bf = 0
+        cf = 0
+        fonctionChoisi = "p2"
+    }
+    if(fonctionChoisi == "cube"){
+        $('#fonctionA').html('f(x)=x³')
+        af = 1
+        bf = 0
+        cf = 0
+        df = 0
+        fonctionChoisi = "p3"
+    }
+    if(fonctionChoisi == "sin"){
+        $('#fonctionA').html('f(x)=sin(x)')
+        af = 1
+        bf = 1
+        cf = 0
+        df = 0
+        fonctionChoisi = "sint"
+    }
+    if(fonctionChoisi == "exp"){
+        $('#fonctionA').html('f(x)=exp(x)')
+        af = 1
+        bf = 1
+        cf = 0
+        df = 0
+        fonctionChoisi = "expt"
+    }
+    if(fonctionChoisi == "affine"){
+        $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + 'x + ' + Math.floor(bf*100)/100)
+        fonctionChoisi = "affine"
+    }
+    if(fonctionChoisi == "p2"){
+        $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + 'x² + ' + Math.floor(bf*100)/100 + 'x + ' + Math.floor(cf*100)/100)
+        fonctionChoisi = "p2"
+    }
+    if(fonctionChoisi == "p3"){
+        $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + 'x³ + ' + Math.floor(bf*100)/100 + 'x² + ' + Math.floor(cf*100)/100 + 'x + ' + Math.floor(df*100)/100)
+        fonctionChoisi = "p3"
+    }
+    if(fonctionChoisi == "sint"){
+        $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + 'sin(' + Math.floor(bf*100)/100 + '(x-' + Math.floor(cf*100)/100 + ')) +' + Math.floor(df*100)/100)
+        fonctionChoisi = "sint"
+    }
+    if(fonctionChoisi == "expt"){
+        $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + 'exp(' + Math.floor(bf*100)/100 + '(x-' + Math.floor(cf*100)/100 + ')) +' + Math.floor(df*100)/100)
+        fonctionChoisi = "expt"
+    }
+}
+function trace(){
+        if (fonctionChoisi == 'affine'){
+            fonctionAffine(af, bf)
+        }else if(fonctionChoisi == 'p2'){
+            fonctionPsecondDeg(af, bf, cf)
+        }else if(fonctionChoisi == 'p3'){
+            fonctionPtroisiemeDeg(af, bf, cf, df)
+        }else if(fonctionChoisi == 'sint'){
+            sinusoidale(af, bf, cf, df)
+        }else if(fonctionChoisi == 'expt'){
+            expo(af, bf, cf, df)
+        }
 }
