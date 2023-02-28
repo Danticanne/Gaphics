@@ -18,7 +18,7 @@ function changeMenu(){
         anime({
             targets : '#ui',
             left : '0',
-            duration : 1500,
+            duration : 1000,
             easing : 'easeOutCubic'
         })
         anime({
@@ -30,8 +30,8 @@ function changeMenu(){
         menuOuvert = false
         anime({
             targets : '#ui',
-            left : '-201px',
-            duration : 1500,
+            left : '-301px',
+            duration : 1000,
             easing : 'easeOutCubic'
         })
         anime({
@@ -63,7 +63,7 @@ anime({
     opacity : 1,
     duration : 700,
     easing : 'linear',
-    delay : 2500
+    delay : 2000
 })
 
 //creation de chaque boule + placement verticale
@@ -171,7 +171,7 @@ function start(){
     })
     anime({
         targets : '#ui',
-        left : '-201px',
+        left : '-301px',
         duration : 1500,
         easing : 'linear',
         delay: 500,

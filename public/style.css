@@ -91,25 +91,25 @@
 #ui{
     position: relative;
     height: 100vh;
-    width: 600px;
-    left: -601px;
+    width: 100vw;
+    left: -701px;
 }
 #uiMain{
     position: absolute;
     height: 100vh;
-    width: 200px;
-    background-color: rgb(91, 3, 117);
-    z-index: 10;
+    width: 300px;
+    background-color: rgb(44, 10, 84);
     border-right: solid 1px violet;
+    z-index: 10;
 }
 #uiEject{
     position: absolute;
     color: white;
-    left: 199px;
+    left: 299px;
     width: 40px;
     top: 30px;
     height: 40px;
-    background-color: rgb(91, 3, 117);
+    background-color: rgb(44, 10, 84);
     border-right: solid 1px violet;
     border-bottom: solid 1px violet;
     font-size: 20px;
@@ -118,6 +118,8 @@
     align-items: center;
     justify-content: center;
     transition: 0.5s;
+    box-shadow: 10px 10px 30px -7px rgba(0,0,0,0.75) inset;
+    z-index: 10;
 }
 #arrow{
     transition: 0.5s;
@@ -131,14 +133,14 @@
 #uiFonction{
     position: absolute;
     color: white;
-    left: 200px;
+    left: 300px;
     padding: 20px;
     padding-top: 5px;
     padding-bottom:  5px;
-    background-color: rgb(91, 3, 117);
+    background-color: rgb(44, 10, 84);
     border-right: solid 1px violet;
     border-bottom: solid 1px violet;
     font-size: 20px;
     border-bottom-right-radius: 10px;
-    z-index: 4;
+    z-index: 11;
 }
