@@ -29,13 +29,11 @@
     width: 100%;
     opacity: 0;
 }
-
 .nbEchelle{
     color: rgb(150, 150, 150);
     position: absolute;
     transform: translate(-100%, 0);
 }
-
 .divEchellev{
     background-color: rgb(150, 150, 150);
     height: 2px;
@@ -61,7 +59,6 @@
     width: 600px;
     opacity: 0;
 }
-
 #boutonStart{
     position: absolute;
     height: 50px;
@@ -81,7 +78,6 @@
     border-bottom-right-radius: 20px;
     background-color: rgb(163, 61, 163);
 }
-
 #fonction{
     position: absolute;
     color: white;
@@ -90,4 +86,59 @@
     top: 85%;
     translate: -50% -50%;
     opacity: 0;
+}
+
+#ui{
+    position: relative;
+    height: 100vh;
+    width: 600px;
+    left: -601px;
+}
+#uiMain{
+    position: absolute;
+    height: 100vh;
+    width: 200px;
+    background-color: rgb(91, 3, 117);
+    z-index: 10;
+    border-right: solid 1px violet;
+}
+#uiEject{
+    position: absolute;
+    color: white;
+    left: 199px;
+    width: 40px;
+    top: 30px;
+    height: 40px;
+    background-color: rgb(91, 3, 117);
+    border-right: solid 1px violet;
+    border-bottom: solid 1px violet;
+    font-size: 20px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+#arrow{
+    transition: 0.5s;
+}
+#uiEject:hover > #arrow{
+    translate: 5px 0;
+}
+#uiEject:hover{
+    background-color: rgb(145, 0, 189);
+}
+#uiFonction{
+    position: absolute;
+    color: white;
+    left: 200px;
+    padding: 20px;
+    padding-top: 5px;
+    padding-bottom:  5px;
+    background-color: rgb(91, 3, 117);
+    border-right: solid 1px violet;
+    border-bottom: solid 1px violet;
+    font-size: 20px;
+    border-bottom-right-radius: 10px;
+    z-index: 4;
 }

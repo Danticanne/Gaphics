@@ -8,6 +8,39 @@ var alea
 var aleaNow
 var boucle = 0
 var multiplicateur = 10
+var menuOuvert = false
+
+//fonction pour ouvrir le menu
+
+function changeMenu(){
+    if(!menuOuvert){
+        menuOuvert = true
+        anime({
+            targets : '#ui',
+            left : '0',
+            duration : 1500,
+            easing : 'easeOutCubic'
+        })
+        anime({
+            targets : '#arrow',
+            rotate : '-180deg',
+            duration : 200,
+        })
+    }else{
+        menuOuvert = false
+        anime({
+            targets : '#ui',
+            left : '-201px',
+            duration : 1500,
+            easing : 'easeOutCubic'
+        })
+        anime({
+            targets : '#arrow',
+            rotate : '0deg',
+            duration : 200,
+        })
+    }
+}
 
 //faire apparaitre le titre au début
 
@@ -136,6 +169,14 @@ function start(){
         duration : 700,
         easing : 'linear',
     })
+    anime({
+        targets : '#ui',
+        left : '-201px',
+        duration : 1500,
+        easing : 'linear',
+        delay: 500,
+        easing : 'easeOutCubic'
+    })
 }
 
 function bouclef(){
@@ -187,6 +228,7 @@ function fonctionAffine(a, b){
         calc =  (demiph-posY).toString() + 'px'
         eq = 'f(x)=' + Math.floor(a*100)/100 + 'x + ' + Math.floor(b*100)/100
         $("#fonction").html(eq)
+        $("#uiFonction").html(eq)
         anime({
             targets : id,
             top : calc,
@@ -204,6 +246,7 @@ function fonctionPsecondDeg(a, b, c){
         calc =  (demiph-posY).toString() + 'px'
         eq = 'f(x)=' + Math.floor(a*100)/100 + 'x² + ' + Math.floor(b*100)/100 + 'x + ' + Math.floor(c*100)/100
         $("#fonction").html(eq)
+        $("#uiFonction").html(eq)
         anime({
             targets : id,
             top : calc,
@@ -221,6 +264,7 @@ function fonctionPtroisiemeDeg(a, b, c, d){
         calc =  (demiph-posY).toString() + 'px'
         eq = 'f(x)=' + Math.floor(a*100)/100 + 'x³ + ' + Math.floor(b*100)/100 + 'x² + ' + Math.floor(c*100)/100 + 'x + ' + Math.floor(d*100)/100
         $("#fonction").html(eq)
+        $("#uiFonction").html(eq)
         anime({
             targets : id,
             top : calc,
@@ -238,6 +282,7 @@ function sinusoidale(a, b, c, d){
         calc =  (demiph-posY).toString() + 'px'
         eq = 'f(x)=' + Math.floor(a*100)/100 + 'sin(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ') +' + Math.floor(d*100)/100
         $("#fonction").html(eq)
+        $("#uiFonction").html(eq)
         anime({
             targets : id,
             top : calc,
@@ -255,6 +300,7 @@ function expo(a, b, c, d){
         calc =  (demiph-posY).toString() + 'px'
         eq = 'f(x)=' + Math.floor(a*100)/100 + 'exp(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ') +' + Math.floor(d*100)/100
         $("#fonction").html(eq)
+        $("#uiFonction").html(eq)
         anime({
             targets : id,
             top : calc,

@@ -6,9 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balls</title>
     <link href="./style.css" rel="stylesheet">
+    
 </head>
 <body>
     <div id="container">
+        <div id="ui">
+            <p id="uiFonction">f(x)=0</p>
+            <button id="uiEject" onclick="changeMenu()">
+                <i class="fa-solid fa-arrow-right" id="arrow"></i>
+            </button>
+            <div id="uiMain"></div>
+        </div>
         <p id="titre">Bienvenue sur Graphics</p>
         <button onclick="start()" id="boutonStart">commencer</button>
         <p id="fonction">f(x)=0</p>
@@ -16,6 +24,7 @@
             
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/732bc6bb11.js" crossorigin="anonymous"></script>
     <script src="/modules/jquery/dist/jquery.min.js"></script>
     <script src="/modules/animejs/lib/anime.min.js"></script>
     <script src="./script.js"></script>
