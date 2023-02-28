@@ -108,13 +108,41 @@ function horizontale() {
 
 function start(){
     boucle = 10
+    anime({
+        targets : '#echelle',
+        opacity : 1,
+        duration : 700,
+        easing : 'linear',
+    })
+    anime({
+        targets : '#boutonStart',
+        opacity : 0,
+        duration : 700,
+        easing : 'linear',
+    })
+    anime({
+        targets : '#fonction',
+        opacity : 0,
+        translate : '-100% -100%',
+        top: '0',
+        left: '0',
+        duration : 1100,
+        easing : 'easeOutCubic',
+
+    })
+    anime({
+        targets : '#titre',
+        opacity : 0,
+        duration : 700,
+        easing : 'linear',
+    })
 }
 
 function bouclef(){
     setTimeout(() => {
-        alea =  Math.floor(Math.random() * (4 - 1 + 1) + 1)
+        alea =  Math.floor(Math.random() * (5 - 1 + 1) + 1)
         while(alea == aleaNow){
-            alea =  Math.floor(Math.random() * (4 - 1 + 1) + 1)
+            alea =  Math.floor(Math.random() * (5 - 1 + 1) + 1)
         }
         aleaNow = alea
         aa =  (Math.random() * 2 - 1)
@@ -132,9 +160,12 @@ function bouclef(){
             fonctionPtroisiemeDeg(aa, ab, ac, ad)
         }
         if(alea == 4){
-            sinusoidale()
+            aa*=5
+            sinusoidale(aa, ab, ac, ad)
         }
-        boucle += 1
+        if(alea == 5){
+            expo(aa, ab, ac, ad)
+        }
         if(boucle<10){
             bouclef()
         }
@@ -146,6 +177,7 @@ bouclef()
 //fonctions ils faut multiplier par le multiplicateur Y et divisier X jsp pouquoi
 
 var calc
+var eq
 
 function fonctionAffine(a, b){
     for (let i = 1; i < nbDeBoule + 1; i++) {
@@ -153,6 +185,8 @@ function fonctionAffine(a, b){
         posX = (i - nbDeBoule/2)/multiplicateur
         posY = (a*posX + b)*multiplicateur
         calc =  (demiph-posY).toString() + 'px'
+        eq = 'f(x)=' + Math.floor(a*100)/100 + 'x + ' + Math.floor(b*100)/100
+        $("#fonction").html(eq)
         anime({
             targets : id,
             top : calc,
@@ -168,6 +202,8 @@ function fonctionPsecondDeg(a, b, c){
         posX = (i - nbDeBoule/2)/multiplicateur
         posY = (a*Math.pow(posX, 2) + b*posX + c)*multiplicateur
         calc =  (demiph-posY).toString() + 'px'
+        eq = 'f(x)=' + Math.floor(a*100)/100 + 'x² + ' + Math.floor(b*100)/100 + 'x + ' + Math.floor(c*100)/100
+        $("#fonction").html(eq)
         anime({
             targets : id,
             top : calc,
@@ -183,6 +219,8 @@ function fonctionPtroisiemeDeg(a, b, c, d){
         posX = (i - nbDeBoule/2)/multiplicateur
         posY = (a*Math.pow(posX, 3) + b*Math.pow(posX, 2) + c*posX + d)*multiplicateur
         calc =  (demiph-posY).toString() + 'px'
+        eq = 'f(x)=' + Math.floor(a*100)/100 + 'x³ + ' + Math.floor(b*100)/100 + 'x² + ' + Math.floor(c*100)/100 + 'x + ' + Math.floor(d*100)/100
+        $("#fonction").html(eq)
         anime({
             targets : id,
             top : calc,
@@ -192,12 +230,31 @@ function fonctionPtroisiemeDeg(a, b, c, d){
     }
 }
 
-function sinusoidale(){
+function sinusoidale(a, b, c, d){
     for (let i = 1; i < nbDeBoule + 1; i++) {
         id = '#boule' + i.toString()
         posX = (i - nbDeBoule/2)/multiplicateur
-        posY = (Math.sin(posX))*multiplicateur
+        posY = (a*10*Math.sin(b*(posX-c))+d)*multiplicateur
         calc =  (demiph-posY).toString() + 'px'
+        eq = 'f(x)=' + Math.floor(a*100)/100 + 'sin(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ') +' + Math.floor(d*100)/100
+        $("#fonction").html(eq)
+        anime({
+            targets : id,
+            top : calc,
+            duration : 750,
+            delay : i*6
+        })
+    }
+}
+
+function expo(a, b, c, d){
+    for (let i = 1; i < nbDeBoule + 1; i++) {
+        id = '#boule' + i.toString()
+        posX = (i - nbDeBoule/2)/multiplicateur
+        posY = (a*10*Math.exp(b*(posX-c))+d)*multiplicateur
+        calc =  (demiph-posY).toString() + 'px'
+        eq = 'f(x)=' + Math.floor(a*100)/100 + 'exp(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + ') +' + Math.floor(d*100)/100
+        $("#fonction").html(eq)
         anime({
             targets : id,
             top : calc,
