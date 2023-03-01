@@ -18,19 +18,22 @@
             <div id="uiMain">
 
                 <div class="divUi" id="fonctionBase">
-                    <p>choisir une fonction:</p>
+                    <p class="choisirfonction">choisi une fonction:</p>
                     <select id="selectBase">
                         <option value="identité">Fonction f(x)=x</option>
                         <option value="carré">Fonction carré f(x)=x²</option>
                         <option value="cube">Fonction cubique f(x)=x³</option>
                         <option value="sin">Fonction sinusoidale f(x)=sin(x)</option>
                         <option value="exp">Fonction exponentielle f(x)=e(x)</option>
+                        <option value="inverse">Fonction inverse f(x)=1/x</option>
                         <option value="affine">affine f(x)=ax+b</option>
                         <option value="p2">polyn. deg. 2 f(x)=ax²+bx+c</option>
                         <option value="p3">polyn. deg. 2 f(x)=ax³+bx²+cx+d</option>
                         <option value="sint">sinusoidale trans. f(x)=asin(b(x-c))+d</option>
                         <option value="expt">exponentielle trans. f(x)=ae(b(x-c))+d</option>
+                        <option value="inverset">inverse trans. f(x)=(a/b(x-c))+d</option>
                     </select>
+                    <p class="choisirfonction">modifie les parametres de celle-ci:</p>
                     <div id="changesValues">
                         <button id="appliquer" onclick="change()">appliquer les changements</button>
                         <div class="inputdiv">

@@ -181,9 +181,9 @@ function start(){
 
 function bouclef(){
     setTimeout(() => {
-        alea =  Math.floor(Math.random() * (5 - 1 + 1) + 1)
+        alea =  Math.floor(Math.random() * (6 - 1 + 1) + 1)
         while(alea == aleaNow){
-            alea =  Math.floor(Math.random() * (5 - 1 + 1) + 1)
+            alea =  Math.floor(Math.random() * (6 - 1 + 1) + 1)
         }
         aleaNow = alea
         aa =  (Math.random() * 2 - 1)
@@ -206,6 +206,9 @@ function bouclef(){
         }
         if(alea == 5){
             expo(aa, ab, ac, ad)
+        }
+        if(alea == 6){
+            inverse(aa, ab, ac, ad)
         }
         if(boucle<10){
             bouclef()
@@ -310,6 +313,26 @@ function expo(a, b, c, d){
     }
 }
 
+function inverse(a, b, c, d){
+    for (let i = 1; i < nbDeBoule + 1; i++) {
+        id = '#boule' + i.toString()
+        posX = (i - nbDeBoule/2)/multiplicateur
+        if(b*(posX-c) != 0){
+            posY = (a*(1/(b*(posX-c)))+d)*multiplicateur
+        }
+        calc =  (demiph-posY).toString() + 'px'
+        eq = 'f(x)=' + Math.floor(a*100)/100 + '/(' + Math.floor(b*100)/100 + '(x-' + Math.floor(c*100)/100 + '))) +' + Math.floor(d*100)/100
+        $("#fonction").html(eq)
+        $("#uiFonction").html(eq)
+        anime({
+            targets : id,
+            top : calc,
+            duration : 750,
+            delay : i*6
+        })
+    }
+}
+
 //tracer la fonction choisi
 
 
@@ -364,6 +387,14 @@ function change(value, index){
         df = 0
         fonctionChoisi = "expt"
     }
+    if(fonctionChoisi == "inverse"){
+        $('#fonctionA').html('f(x)=exp(x)')
+        af = 1
+        bf = 1
+        cf = 0
+        df = 0
+        fonctionChoisi = "inverset"
+    }
     if(fonctionChoisi == "affine"){
         $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + 'x + ' + Math.floor(bf*100)/100)
         fonctionChoisi = "affine"
@@ -384,6 +415,10 @@ function change(value, index){
         $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + 'exp(' + Math.floor(bf*100)/100 + '(x-' + Math.floor(cf*100)/100 + ')) +' + Math.floor(df*100)/100)
         fonctionChoisi = "expt"
     }
+    if(fonctionChoisi == "inverset"){
+        $('#fonctionA').html('f(x)=' + Math.floor(af*100)/100 + '/(' + Math.floor(bf*100)/100 + '(x-' + Math.floor(cf*100)/100 + '))) +' + Math.floor(df*100)/100)
+        fonctionChoisi = "inverset"
+    }
 }
 function trace(){
         if (fonctionChoisi == 'affine'){
@@ -396,5 +431,7 @@ function trace(){
             sinusoidale(af, bf, cf, df)
         }else if(fonctionChoisi == 'expt'){
             expo(af, bf, cf, df)
+        }else if(fonctionChoisi == 'inverset'){
+            inverse(af, bf, cf, df)
         }
 }
