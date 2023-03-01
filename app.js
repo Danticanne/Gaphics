@@ -11,3 +11,4 @@ app.get('/', (req, res) => {
 })
 
 app.listen(8080)
+console.log("App available on port 8080!")
