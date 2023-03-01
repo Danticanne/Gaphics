@@ -1,9 +1,9 @@
-name: main_docker_build
+name: master_docker_build
 
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
 
 jobs:
   docker:
