@@ -239,3 +239,20 @@ select{
     align-items: center;
     margin-left:10px ;
 }
+
+#coordDiv{
+    height: 30px;
+    width: 100px;
+    background-color: blue;
+    position: absolute;
+    z-index: 5;
+    border: solid 2px white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    background-color: rgb(62, 18, 112);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    display: none;
+}

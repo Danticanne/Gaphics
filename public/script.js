@@ -1,6 +1,6 @@
 var nbDeBoule = 250
 var demiph = $(window).height()/2 
-var precisionEchelle = 10
+var precisionEchelle = 20
 var taille = $(window).width()/nbDeBoule
 var id
 var quitterTitre = false
@@ -9,6 +9,32 @@ var aleaNow
 var boucle = 0
 var multiplicateur = 10
 var menuOuvert = false
+var bouleXSouris
+var idBouleSouris
+var coord
+var commence = false
+
+//fonction quand souris bouge
+
+$('#container').on('click', (e) => {
+    if(e.pageX > 100 && e.pageY > 200 && !menuOuvert || menuOuvert && e.pageX > 300){
+        bouleXSouris = Math.floor(e.pageX/$(window).width()*nbDeBoule)
+        idBouleSouris = '#boule' + bouleXSouris.toString()
+        anime({
+            targets: "#coordDiv",
+            duration: 250,
+            left : $(idBouleSouris).css('left'),
+            top : $(idBouleSouris).css('top'),
+            easing : 'easeOutCubic'
+        })
+        //s$("#coordDiv").css({'left' : $(idBouleSouris).css('left'), 'top' : $(idBouleSouris).css('top')})
+        coord = '(' + ((bouleXSouris-nbDeBoule/2)/multiplicateur).toString() + ';' + ((-(parseInt($(idBouleSouris).css('top'))-$(window).height()/2))/multiplicateur).toString() + ')'
+        $("#coord").html(coord)
+    }
+    if(menuOuvert && e.pageX > 300){
+        changeMenu()
+    }
+})
 
 //fonction pour ouvrir le menu
 
@@ -177,6 +203,8 @@ function start(){
         delay: 500,
         easing : 'easeOutCubic'
     })
+    $("#coordDiv").css({'display' : 'flex', 'top' : '-60px', 'left' : '0'})
+    commence = true
 }
 
 function bouclef(){
@@ -238,6 +266,16 @@ function fonctionAffine(a, b){
             duration : 750,
             delay : i*6
         })
+        if(bouleXSouris == i){
+            anime({
+                targets : '#coordDiv',
+                top : calc,
+                duration : 750,
+                delay : i*6
+            })
+            coord = '(' + ((bouleXSouris-nbDeBoule/2)/multiplicateur).toString() + ';' + ((-(parseInt(calc)-$(window).height()/2))/multiplicateur).toString() + ')'
+            $("#coord").html(coord)
+        }
     }
 }
 
@@ -256,6 +294,16 @@ function fonctionPsecondDeg(a, b, c){
             duration : 750,
             delay : i*6
         })
+        if(bouleXSouris == i){
+            anime({
+                targets : '#coordDiv',
+                top : calc,
+                duration : 750,
+                delay : i*6
+            })
+            coord = '(' + ((bouleXSouris-nbDeBoule/2)/multiplicateur).toString() + ';' + ((-(parseInt(calc)-$(window).height()/2))/multiplicateur).toString() + ')'
+            $("#coord").html(coord)
+        }
     }
 }
 
@@ -274,6 +322,16 @@ function fonctionPtroisiemeDeg(a, b, c, d){
             duration : 750,
             delay : i*6
         })
+        if(bouleXSouris == i){
+            anime({
+                targets : '#coordDiv',
+                top : calc,
+                duration : 750,
+                delay : i*6
+            })
+            coord = '(' + ((bouleXSouris-nbDeBoule/2)/multiplicateur).toString() + ';' + ((-(parseInt(calc)-$(window).height()/2))/multiplicateur).toString() + ')'
+            $("#coord").html(coord)
+        }
     }
 }
 
@@ -292,6 +350,16 @@ function sinusoidale(a, b, c, d){
             duration : 750,
             delay : i*6
         })
+        if(bouleXSouris == i){
+            anime({
+                targets : '#coordDiv',
+                top : calc,
+                duration : 750,
+                delay : i*6
+            })
+            coord = '(' + ((bouleXSouris-nbDeBoule/2)/multiplicateur).toString() + ';' + ((-(parseInt(calc)-$(window).height()/2))/multiplicateur).toString() + ')'
+            $("#coord").html(coord)
+        }
     }
 }
 
@@ -310,6 +378,16 @@ function expo(a, b, c, d){
             duration : 750,
             delay : i*6
         })
+        if(bouleXSouris == i){
+            anime({
+                targets : '#coordDiv',
+                top : calc,
+                duration : 750,
+                delay : i*6
+            })
+            coord = '(' + ((bouleXSouris-nbDeBoule/2)/multiplicateur).toString() + ';' + ((-(parseInt(calc)-$(window).height()/2))/multiplicateur).toString() + ')'
+            $("#coord").html(coord)
+        }
     }
 }
 
@@ -330,6 +408,16 @@ function inverse(a, b, c, d){
             duration : 750,
             delay : i*6
         })
+        if(bouleXSouris == i){
+            anime({
+                targets : '#coordDiv',
+                top : calc,
+                duration : 750,
+                delay : i*6
+            })
+            coord = '(' + ((bouleXSouris-nbDeBoule/2)/multiplicateur).toString() + ';' + ((-(parseInt(calc)-$(window).height()/2))/multiplicateur).toString() + ')'
+            $("#coord").html(coord)
+        }
     }
 }
 
