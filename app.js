@@ -8,6 +8,7 @@ app.use(express.static("public"))
 
 app.get('/', (req, res) => {
     res.render('index.ejs')
+    console.log("nouvelle connection")
 })
 
 app.listen(8080)
