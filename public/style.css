@@ -10,6 +10,11 @@
     font-family: 'Raleway';
     color: white;
 }
+
+html, body{
+    overflow: hidden;
+}
+
 button{
     cursor: pointer;
 }
@@ -21,6 +26,9 @@ select{
     background-color: rgb(22, 22, 65);
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
 }
 
 .boule{
@@ -58,13 +66,13 @@ select{
 
 #titre{
     position: absolute;
-    font-size: 50px;
+    font-size: 3rem;
     color: white;
     left: 50%;
     top: 25%;
     transform: translate(-50%, -50%);
-    width: 600px;
     opacity: 0;
+    width: 100vw;
 }
 #boutonStart{
     position: absolute;
@@ -98,7 +106,7 @@ select{
 #ui{
     position: relative;
     height: 100vh;
-    width: 100vw;
+    width: 300vw;
     left: -701px;
 }
 #uiMain{
